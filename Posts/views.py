@@ -1,32 +1,29 @@
+from django.urls import reverse
 from django.shortcuts import redirect, render 
-from .models import text
-
-message=[]
-message.append("")
+from .models import Text
 
 def index(request):
-    context = {'message': message[0]}
-    message.pop()
-    message.append("")
-    return render(request,"Posts/index.html", context)
+    return render(request,"Posts/index.html")
 
 def saveText(request):
     if request.method == "POST" :
         newText = request.POST['yourThoughts']
         title = request.POST['title']
-        yourText = text(inputText = newText, title = title)
+        if not title:
+            yourText = Text(inputText = newText)
+        else:
+            yourText = Text(inputText = newText, title = title)
         yourText.save()
-        message.pop()
-        message.append("Your text has been saved, click 'Access the posts' to see the post")
-    return redirect('index')
+        return redirect(reverse('post', kwargs={"id": yourText.id}))
+    return redirect("index")
 
 def list(request):
-    all_entries = text.objects.all()
+    all_entries = Text.objects.all()
     context= {'all_entries': all_entries}
     return render(request, "Posts/list.html", context)
 
 def post(request, id):
-    thePostedText = text.objects.get(id = id)
+    thePostedText = Text.objects.get(id = id)
     context = {'thePostedText' : thePostedText}
     return render(request, "Posts/post.html", context)
 

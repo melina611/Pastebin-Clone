@@ -1,52 +1,27 @@
-<!doctype html>
-<html lang="en">
+{% extends "Posts/base.html" %}
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% block content %}
 
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-        crossorigin="anonymous"></script>
-</head>
-
-<body>
-    <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
-        <div class="container-fluid">
-            <h3 style="color: white;">Pastebin Clone</h3>
-            <a class="btn btn-success" href="/saveText" role="button">HOME</a>
-            <a class="btn btn-primary" href="/list" role="button">Access the posts</a>
-        </div>
-    </nav>
-    <form action="/saveText" method="post">  
-        {% csrf_token %}
-        <br>
-        <div class="card text-bg-light mb-3" style="max-width: 40rem;">
-            <label for="yourText"> 
-                <h4 class="card-header" style="color:blue;">Write your thoughts</h4>
+<form action="/saveText" method="post">  
+    {% csrf_token %}
+    <br>
+    <div class="card text-bg-light mb-3" style="max-width: 40rem;">
+        <label for="yourText"> 
+            <h4 class="card-header" style="color:blue;">Write your thoughts</h4>
+        </label>
+        <div class="card-body">
+            <label for="yourTitle">
+                <h4 class="card-title">Title</h4>
             </label>
-            <div class="card-body">
-                <label for="yourTitle">
-                    <h4 class="card-title">Title</h4>
-                </label>
-                <input name="title" type="text" id="yourTitle">
-                <br><br>
-                <textarea placeholder="Write something here" name="yourThoughts" id="yourText" cols="60" rows="10"></textarea>
+            <input name="title" type="text" id="yourTitle">
+            <br><br>
+            <textarea placeholder="Write something here" name="yourThoughts" id="yourText" cols="60" rows="10"></textarea>
+            <div style="position: absolute; top: 330px; left: 500px; z-index: auto;">
                 <button type="submit" class="btn btn-info">
                     Save 
                 </button>
             </div>
         </div>
-    </form>
-    {{message}}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-        crossorigin="anonymous"></script>
-</body>
-
-</html>
+    </div>
+</form>
+{% endblock %}
