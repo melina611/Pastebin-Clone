@@ -1,14 +1,18 @@
 {% extends "Posts/base.html" %}
 
 {% block content %}
-<br><br><br><br>
-<div style="position: absolute; top: 150px; left: 500px; z-index: auto;">
-    <div class="card text-bg-success mb-3" style="max-width: 30rem;">
+<div style="position: absolute; top: 60px; left: 450px; z-index: auto;">
+    <div style="position: absolute; top: 60px; left: 240px; z-index: auto;">
+        <h2 style="color: green;">YOUR POST</h2>
+    </div>
+    <img src="https://2.bp.blogspot.com/-trO-yFceGVc/WJo4xZrvTSI/AAAAAAAAUCs/Y_NIA0vtlpEFzHKw2Ft-jzdkW2WgBzLGgCLcB/s1600/ok-emoji.png"
+        width="150" height="150" alt="">
+    <div class="card text-bg-light mb-3" style="max-width: 40rem; min-width: 40rem; min-height: 25rem;">
         <div class="card-header">
-            <h2 style="color: black;">{{thePostedText.title}}</h2>
+            <h2 style="color: blue;">{{thePostedText.title}}</h2>
         </div>
         <div class="card-body">
-            <h3>{{thePostedText.inputText}}</h3>
+            <h3 style="color: black;">{{thePostedText.inputText}}</h3>
         </div>
     </div>
 </div>
